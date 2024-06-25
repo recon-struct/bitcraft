@@ -1,0 +1,188 @@
+{
+  // Place your global snippets here. Each snippet is defined under a snippet name and has a scope, prefix, body and
+  // description. Add comma separated ids of the languages where the snippet is applicable in the scope field. If scope
+  // is left empty or omitted, the snippet gets applied to all languages. The prefix is what is
+  // used to trigger the snippet and the body will be expanded and inserted. Possible variables are:
+  // $1, $2 for tab stops, $0 for the final cursor position, and ${1:label}, ${2:another} for placeholders.
+  // Placeholders with the same ids are connected.
+  // Example:
+  // "Print to console": {
+  // 	"scope": "javascript,typescript",
+  // 	"prefix": "log",
+  // 	"body": [
+  // 		"console.log('$1');",
+  // 		"$2"
+  // 	],
+  // 	"description": "Log output to console"
+  // }
+  "Deprecated": {
+    "scope": "typescript",
+    "prefix": "dep",
+    "body": ["/**", " * @deprecated ${1:reason}", " */"],
+    "description": "Deprecated",
+  },
+  "Import Local Type": {
+    "scope": "typescript",
+    "prefix": "im",
+    "body": ["import type { ${1:Type} } from '~/${2:module}/${3:path}'"],
+    "description": "Import Local Type",
+  },
+  "New Util": {
+    "scope": "typescript",
+    "prefix": "util",
+    "body": [
+      "const ${1:${TM_FILENAME_BASE/[A-Za-z-]+/${0:/camelcase}/g}} = ${2:<$3>}($4) => $5",
+      "",
+      "export default $1",
+    ],
+    "description": "Create a new Util",
+  },
+  "New Class": {
+    "scope": "typescript",
+    "prefix": "class",
+    "body": [
+      "class ${1:${TM_FILENAME_BASE/[A-Za-z-]+/${0:/pascalcase}/g}} {$2",
+      "\t${3:constructor($4) {$5\\}}",
+      "}",
+      "",
+      "export default $1",
+    ],
+    "description": "Create a new Util",
+  },
+  "Export default from other file": {
+    "scope": "javascript,typescript",
+    "prefix": "ex",
+    "body": [
+      "export { default as ${1:ModuleName} } from '${2:./${1/(^[A-Z][a-z]*|[a-z])([A-Z])?/${1:/downcase}${2:+-}${2:/downcase}/g}}'",
+    ],
+    "description": "Create a default export from another file",
+  },
+  "Export default from current file": {
+    "scope": "javascript,typescript",
+    "prefix": "ex",
+    "body": ["export default ${1:name}"],
+    "description": "Create a default export from the current file",
+  },
+  "Export * as named export from other file": {
+    "scope": "javascript,typescript",
+    "prefix": "estarn",
+    "body": [
+      "export * as ${1:ModuleName} from '${2:./${1/(^[A-Z][a-z]*|[a-z])([A-Z])?/${1:/downcase}${2:+-}${2:/downcase}/g}}'",
+    ],
+    "description": "Export all named exports from other file",
+  },
+  "Export * from other file": {
+    "scope": "javascript,typescript",
+    "prefix": "estar",
+    "body": ["export * from './${1:path}'"],
+    "description": "Export all named exports from other file",
+  },
+  "Import default": {
+    "scope": "typescript",
+    "prefix": "im",
+    "body": ["import ${1:name} from '${2:./${3:file-path}}'"],
+    "description": "Import default",
+  },
+  "Import named": {
+    "scope": "typescript",
+    "prefix": "im",
+    "body": ["import { ${3:name} } from '${1:./${2:file-path}}'"],
+    "description": "Import named",
+  },
+  "Import named as": {
+    "scope": "typescript",
+    "prefix": "im",
+    "body": [
+      "import { ${3:name} as ${4:newName} } from '${1:./${2:file-path}}'",
+    ],
+    "description": "Import named",
+  },
+  "Create a snippet": {
+    "scope": "snippets",
+    "body": [
+      "\"${1:Snippet Name}\": {",
+      "\t\"scope\": \"${2:typescript}\",",
+      "\t\"prefix\": \"$3\",",
+      "\t\"body\": [",
+      "\t\t\"${4}\",$5",
+      "\t],",
+      "\t\"description\": \"${6:$1}\"",
+      "},",
+    ],
+    "prefix": "snip",
+    "description": "Create a snippet",
+  },
+  "Create an interface": {
+    "scope": "typescript",
+    "body": [
+      "export interface ${1:Name} {",
+      "\t${2:property}: ${3:value}$4",
+      "}",
+    ],
+    "prefix": "int",
+    "description": "Create an interface",
+  },
+  "Unit Test": {
+    "scope": "typescript",
+    "prefix": "test",
+    "body": [
+      "import { describe, expect, it } from 'bun:test'",
+      "import ${1:${TM_FILENAME_BASE/(-([a-zA-Z]))|(\\.[^$]+$)/${2:/upcase}/g}} from './${TM_FILENAME_BASE/(\\.[^$]+$)//g}'",
+      "",
+      "describe('${1:${TM_FILENAME_BASE/(-([a-zA-Z]))|(\\.[^$]+$)/${2:/upcase}/g}}', () => {",
+    ],
+    "description": "Unit Test",
+  },
+  "Describe unit test": {
+    "scope": "typescript",
+    "prefix": "describe",
+    "body": [
+      "describe('${1:${TM_FILENAME_BASE/(-([a-zA-Z]))|(\\.[^$]+$)/${2:/upcase}/g}}', () => {",
+      "\tit('${2:should do a thing}', () => {",
+      "\t\texpect(${3:actual}).${4:toBe}(${5:expected})",
+      "\t})",
+      "})",
+    ],
+    "description": "Describe unit test",
+  },
+  "it": {
+    "scope": "typescript",
+    "prefix": "it",
+    "body": [
+      "it('${1:should do a thing}', () => {",
+      "\texpect(${2:actual}).${3:toBe}(${4:expected})",
+      "})",
+    ],
+    "description": "it",
+  },
+  "expect": {
+    "scope": "typescript",
+    "prefix": "expect",
+    "body": ["expect(${1:actual}).${2:toBe}(${3:expected})"],
+    "description": "expect",
+  },
+  "Utility Type": {
+    "scope": "typescript",
+    "prefix": "type",
+    "body": [
+      "export type ${1:${TM_FILENAME_BASE/[A-Za-z-]+/${0:/pascalcase}/g}}<A${2}> = {",
+      "\t$3",
+      "}",
+    ],
+    "description": "Utility Type",
+  },
+  "Conditional Types": {
+    "scope": "typescript",
+    "prefix": "condition",
+    "body": [
+      "export type ${1:${TM_FILENAME_BASE/[A-Za-z-]+/${0:/pascalcase}/g}}<A${2}> = ${3:A extends ${4:Type} ? ${5:true} : ${6:false}}",
+    ],
+    "description": "Conditional Types",
+  },
+  "Export Constant": {
+    "scope": "typescript",
+    "prefix": "excon",
+    "body": ["export const ${1:varName} = ${2:'${3:value}'}"],
+    "description": "Export Constant",
+  },
+}
