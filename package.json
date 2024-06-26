@@ -1,6 +1,6 @@
 {
   "name": "@recon-struct/bitcraft",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "A library for working with binary data in TypeScript.",
   "type": "module",
   "devDependencies": {
@@ -8,6 +8,7 @@
     "prettier": "^3.3.2",
     "prettier-plugin-organize-imports": "^3.2.4",
     "rimraf": "^5.0.7",
+    "tsc-alias": "^1.8.10",
     "typedoc": "^0.25.13"
   },
   "dependencies": {
@@ -22,7 +23,7 @@
     "generate-docs": "typedoc --out docs src",
     "test": "bun test",
     "dev": "bun build --watch",
-    "build": "rimraf ./dist && tsc && bun build.ts"
+    "build": "rimraf ./dist && tsc && tsc-alias && bun build.ts"
   },
   "main": "dist/index.js",
   "module": "dist/index.js",
