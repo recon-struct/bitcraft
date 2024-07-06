@@ -7,7 +7,7 @@ import type { Struct, StructTuple } from './types'
  * @returns A tuple-like structure containing the input structs.
  * @category Struct
  */
-const createStructTuple = <A extends Struct[]>(
+const createStruct = <A extends Struct[]>(
   structs: [...A],
 ): StructTuple<typeof structs> => {
   return {
@@ -20,4 +20,4 @@ const createStructTuple = <A extends Struct[]>(
   }
 }
 
-export default createStructTuple
+export default createStruct
