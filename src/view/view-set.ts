@@ -13,7 +13,7 @@ import type { Struct, StructValue } from '~/types'
  * @param {B} struct - The struct whose values need to be set.
  * @param {C} offset - The offset at which to set the values.
  * @param {D} value - The value of the struct.
- * @param {E} isLittleEndian - The flag indicating whether the DataView is little endian.
+ * @param {E} isLittleEndian - Optional. The flag indicating whether the DataView is little endian.
  * @throws If the offset is outside the bounds of the buffer.
  * @category Struct
  */
