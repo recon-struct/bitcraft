@@ -1,5 +1,5 @@
 import { getIsLittleEndian } from '@recon-struct/utils'
-import type { Struct } from '~/types'
+import type { Struct, StructValue } from '~/types'
 
 /**
  * Retrieves structured data from a DataView object based on a given struct definition.
@@ -12,11 +12,16 @@ import type { Struct } from '~/types'
  * @throws If the offset is outside the bounds of the DataView object's buffer.
  * @category Struct
  */
-const viewGet = (
-  view: DataView,
-  struct: Struct,
-  offset: number,
-  isLittleEndian = getIsLittleEndian(),
+const viewGet = <
+  A extends DataView,
+  B extends Struct,
+  C extends number,
+  D extends boolean = boolean,
+>(
+  view: A,
+  struct: B,
+  offset: C,
+  isLittleEndian = getIsLittleEndian() as D,
 ) => {
   const { byteLength: structByteLen } = struct
   const {
@@ -30,7 +35,9 @@ const viewGet = (
 
   let localOffset = 0
 
-  const traverseStruct = (currentStruct: Struct): any => {
+  const traverseStruct = <E extends Struct>(
+    currentStruct: E,
+  ): StructValue<E> => {
     if (currentStruct.type === 'Tuple') {
       const items = []
 
@@ -38,7 +45,7 @@ const viewGet = (
         items.push(traverseStruct(currentStruct.items[i]))
       }
 
-      return items
+      return items as StructValue<E>
     } else {
       const { byteLength, type } = currentStruct
       const methodName = `get${type}` as const
@@ -47,11 +54,11 @@ const viewGet = (
 
       localOffset += byteLength
 
-      return result
+      return result as StructValue<E>
     }
   }
 
-  return traverseStruct(struct)
+  return traverseStruct(struct) as StructValue<B>
 }
 
 export default viewGet
