@@ -9,6 +9,10 @@ A library for working with binary data in TypeScript.
 This is a repository of functions for creating data structures in ArrayBuffers.
 In other words it is a library for working with binary data.
 
-## 🌐 Links
+## Links
 
 - [Documentation](https://recon-struct.github.io/bitcraft)
+
+## Blog Series
+
+- [Bitcraft Announcement](https://blog.hox.io/articles/2024-07-06)
